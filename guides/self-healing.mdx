@@ -4,6 +4,10 @@ description: 'Automatically repair functions till it works'
 icon: 'truck-medical'
 ---
 
+## Add `max_attempts`
+
+When the LLM hallucinates we can make it self heal/repair. You just add `max_attempts` as a argument to the function and it will be attempting to fix itself till `max_attempts` or a successfull call is made:
+
 ```python
 arg(
     "Create a file called language.csv with the top 10 most popular programming languages available, after that show me only the low complexity languages.", 
@@ -11,3 +15,7 @@ arg(
     max_attempts=5
 )
 ```
+
+<Info>
+  The results of a function won't be appended until `max_attempts` is reached to save tokens + context limit.
+</Info>
