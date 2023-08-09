@@ -25,8 +25,8 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Discord",
+    "url": "https://discord.gg/A9k3hpW4cj"
   },
   "tabs": [
     {
@@ -57,8 +57,7 @@
     }
   ],
   "footerSocials": {
-    "twitter": "https://twitter.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "discord": "https://discord.gg/A9k3hpW4cj",
+    "github": "https://github.com/JackyKoh/argai",
   }
 }
