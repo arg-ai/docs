@@ -1,23 +1,24 @@
 ---
 title: Introduction
-description: "Welcome to Arg AI"
+description: "Welcome to 🌟 argai"
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+LLM function calling is the ability to describe functions to LLMs and have the LLMs infer the input of the functions based off natural language query. For example:
+- “Email Anya to see if she wants to get coffee next Friday” ->
+```python
+send_email(to="anya@gmail.com", body="Hey Anya, do you want to get coffee this Friday? Let me know what time works best for you" )
+```
+- “Who are our highest spending customers” ->
+```python
+sql_query(query="SELECT customer, spend FROM CUSTOMERS ORDERED BY spend DESC;")
+```
+
+This library aims to help you develop function calling capabilities for your functions and build applications that utilizes function calling.
 
 ## Setting up
+Install with `pip install argai`
 
-### Quickstart
-`pip install argai`
+## Quickstart
 
 Make your functions intelligent and queried via natural language:
 ```python
