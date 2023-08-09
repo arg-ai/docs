@@ -6,6 +6,7 @@ icon: 'map'
 
 Calling from a list of functions with just natural language, the LLM will automatically decide which function to use.
 
+1. First register the functions
 ```python
 from argai import ArgFuncStorage
 arg = ArgFuncStorage()
@@ -24,8 +25,14 @@ def pandas_query(csv_file, query):
     """Run a pandas query on a csv file"""
     df = pd.read_csv(csv_file)
     return df.query(query)
+```
 
+2. Call it.
+For complex queries its best to use `max_calls` and `max_attempts`.
+```python
 arg(
-    "Create a file called language.csv with the top 10 most popular programming languages available.", 
+    "Create a file called language.csv with the top 10 most popular programming languages available.",
+    max_calls=10,
+    max_attempts=5
 )
 ```
