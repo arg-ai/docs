@@ -43,11 +43,11 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "setup", "quickstart"]
+      "pages": ["introduction", "setup", "how-it-works"]
     },
     {
       "group": "Guides",
-      "pages": ["guides/multiple-functions", "guides/self-healing", "guides/consecutive-calls"]
+      "pages": ["guides/tuning-performance", "guides/self-healing", "guides/consecutive-calls", "guides/multiple-functions"]
     }
   ],
   "footerSocials": {

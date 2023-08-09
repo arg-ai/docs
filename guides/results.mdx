@@ -1,20 +1,31 @@
 ---
 title: 'Results & Logs'
-description: 'Automatically repair functions till it works'
-icon: 'truck-medical'
+description: 'Retrieve all the useful and relevant information regarding a function call run'
+icon: 'book'
 ---
 
-## Add `max_attempts`
+When you get the results back from a function call it returns a `ArgRun` response object. This response contains many useful things such as:
+- output
+- results
+- logs
+- messages
 
-When the LLM hallucinates we can make it self heal/repair. You just add `max_attempts` as a argument to the function and it will be attempting to fix itself till `max_attempts` is reached or a successfull call is made:
-
-```python
-arg(
-    "Create a file called language.csv with the top 10 most popular programming languages available, after that show me only the low complexity languages.", 
-    max_attempts=5
-)
+Run that will be used for showing the example of results and logs.
+```
+result = arg("Create a file called language.csv for the top 10 most popular programming languages and its complexity.")
 ```
 
-<Info>
-  The results of a function won't be appended until `max_attempts` or answer is reached to save tokens + context limit.
-</Info>
+## `result.output` and `result.status`
+The output from the function and the status of whether the function was executed successfully or not.
+
+## `result.logs`
+The formatted logs of whats happened in the run.
+
+## `result.messages`
+The conversation history that you can directly feedback to `arg(result.message)` or LLMs like OpenAI
+
+## `result.attempts_logs`
+The log of attempts when self-healing was trigger.
+
+## `result.tokens_used`
+The amount of tokens that were used.
