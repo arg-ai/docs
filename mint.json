@@ -46,8 +46,8 @@
       "pages": ["introduction", "setup", "quickstart"]
     },
     {
-      "group": "Features",
-      "pages": ["features/multiple-functions", "features/self-healing", "features/consecutive-calls"]
+      "group": "Guides",
+      "pages": ["guides/multiple-functions", "guides/self-healing", "guides/consecutive-calls"]
     }
   ],
   "footerSocials": {
