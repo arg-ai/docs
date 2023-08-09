@@ -1,5 +1,5 @@
 ---
-title: 🌟Arg AI
+title: 🌟 Arg AI
 description: "⚡ Run any of your functions with just natural language."
 ---
 This library aims to help you develop function calling capabilities for your functions and build applications that utilizes function calling.
@@ -18,12 +18,24 @@ sql_query(query="SELECT customer, spend FROM CUSTOMERS ORDERED BY spend DESC;")
 ```
 
 
-## Setting up
-Install with `pip install argai`
+## Quick start
+1. Install with `pip install argai`.
 
-## Quickstart
+2. Setup your LLM. In this example we use OpenAI
 
-Make your functions intelligent and queryable via natural language:
+via terminal:
+```
+export OPENAI_API_KEY="..."
+```
+
+via python:
+```python
+import openai
+openai.api_key = "..."
+```
+
+
+3. Make your functions intelligent and queryable via natural language:
 ```python
 def create_file(filename, text):
     with open(filename,'w') as f:
@@ -32,9 +44,25 @@ def create_file(filename, text):
 
 from argai import ArgFunction
 
-af = ArgFunction(create_file)
+arg = ArgFunction(create_file)
 
-result = af.func_call("Create a file called language.csv with all the programming languages available.")
+result = arg("Create a file called language.csv with all the programming languages available.")
+```
+
+Logs to keep track of the progress:
+```
+1: 💬: Create a file called language.csv for the top 10 most popular programming languages and its complexity.
+    📝 Calling LLM
+    🏃 Running function: create_file(filename='language.csv', text='Language,Complexity\nPython,Low\nJavaScript,Medium\nJava,High\nC++,High\nC#,Medium\nRuby,Low\nPHP,Medium\nSwift,Medium\nGo,Medium\nTypeScript,Medium')
+    ✔️ Sucessfull, result: {'status': 'success', 'filename': 'language.csv'}
+2: 🌟: Ran create_file, result: {'status': 'success', 'filename': 'language.csv'}
+    📝 Calling LLM
+3: 🤖: I have created a file called `language.csv` with the information of the top 10 most popular programming languages and their complexity.
+```
+
+4. Final output can be accessed via `result.output`
+```
+{'status': 'success', 'filename': 'language.csv'}
 ```
 
 <CardGroup cols={2}>
