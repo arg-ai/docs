@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: "Welcome to the home of your new documentation"
+description: "Welcome to Arg AI"
 ---
 
 <img
@@ -16,7 +16,22 @@ description: "Welcome to the home of your new documentation"
 
 ## Setting up
 
-The first step to world-class documentation is setting up your editing environnments.
+### Quickstart
+`pip install argai`
+
+Make your functions intelligent and queried via natural language:
+```python
+def create_file(filename, text):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"status" : "success", "filename" : filename}
+
+from argai import ArgFunction
+
+af = ArgFunction(create_file)
+
+result = af.func_call("Create a file called language.csv with all the programming languages available.")
+```
 
 <CardGroup cols={2}>
   <Card
