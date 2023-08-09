@@ -47,7 +47,7 @@
     },
     {
       "group": "Features",
-      "pages": ["features/self-healing", "features/consecutive-calls"]
+      "pages": ["features/multiple-functions", "features/self-healing", "features/consecutive-calls"]
     }
   ],
   "footerSocials": {
