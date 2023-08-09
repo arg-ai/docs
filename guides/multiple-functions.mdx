@@ -4,9 +4,9 @@ description: 'Run multiple functions'
 icon: 'map'
 ---
 
-Calling from a list of functions with just natural language, the LLM will automatically decide which function to use.
+Calling from multiple functions with just natural language, the LLM will automatically decide which functions to use and in which order.
 
-1. First register the functions
+## 1. First register the functions
 ```python
 from argai import ArgFuncStorage
 arg = ArgFuncStorage()
@@ -27,8 +27,8 @@ def pandas_query(csv_file, query):
     return df.query(query)
 ```
 
-2. Call it.
-For complex queries its best to use `max_calls` and `max_attempts`.
+## 2. Run
+For complex queries that requires multiple calls of different functions set `max_calls` and `max_attempts`.
 ```python
 arg(
     "Create a file called language.csv with the top 10 most popular programming languages available.",
