@@ -8,8 +8,8 @@ Calling from multiple functions with just natural language, the LLM will automat
 
 ## 1. First register the functions
 ```python
-from argai import ArgFuncStorage
-arg = ArgFuncStorage()
+from argai import ArgAI
+arg = ArgAI()
 
 @arg.register
 def create_file(filename, text):
@@ -28,7 +28,7 @@ def pandas_query(csv_file, query):
 ```
 
 ## 2. Run
-For complex queries that requires multiple calls of different functions set `max_calls` and `max_attempts`.
+For complex queries that requires multiple calls of different functions set `max_calls` for consecutive calling and `max_attempts` for self-healing.
 ```python
 arg(
     "Create a file called language.csv with the top 10 most popular programming languages available.",
