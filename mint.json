@@ -2,8 +2,8 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Run your functions with natural language query and build agents, chatbot and more",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
   "favicon": "/favicon.png",
   "colors": {
@@ -18,12 +18,6 @@
       "to": "#9563FF"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:dev@arg.ai"
-    }
-  ],
   "topbarCtaButton": {
     "name": "Discord",
     "url": "https://discord.gg/A9k3hpW4cj"
@@ -58,6 +52,6 @@
   ],
   "footerSocials": {
     "discord": "https://discord.gg/A9k3hpW4cj",
-    "github": "https://github.com/JackyKoh/argai",
+    "github": "https://github.com/JackyKoh/argai"
   }
 }
