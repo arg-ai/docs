@@ -47,7 +47,7 @@ from argai import ArgFunction
 
 arg = ArgFunction(create_file)
 
-result = arg("Create a file called language.csv with all the programming languages available.")
+result = arg("Create a file called language.csv for the top 10 most popular programming languages and its complexity.")
 ```
 
 Logs to keep track of the progress:
@@ -60,6 +60,11 @@ Logs to keep track of the progress:
     📝 Calling LLM
 3: 🤖: I have created a file called `language.csv` with the information of the top 10 most popular programming languages and their complexity.
 ```
+We can see that it automatically created the inputs and called the function with:
+```python
+create_file(filename='language.csv', text='Language,Complexity\nPython,Low\nJavaScript,Medium\nJava,High\nC++,High\nC#,Medium\nRuby,Low\nPHP,Medium\nSwift,Medium\nGo,Medium\nTypeScript,Medium')
+```
+
 
 4. Final output can be accessed via `result.output`
 ```
