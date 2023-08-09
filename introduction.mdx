@@ -37,18 +37,49 @@ openai.api_key = "..."
 
 
 3. Make your functions intelligent and queryable via natural language:
+<CodeGroup>
 ```python
 def create_file(filename, text):
     with open(filename,'w') as f:
         f.write(text)
         return {"status" : "success", "filename" : filename}
 
-from argai import ArgFunction
+from argai import ArgFunc
 
-arg = ArgFunction(create_file)
+arg = ArgFunc(create_file)
 
 result = arg("Create a file called language.csv for the top 10 most popular programming languages and its complexity.")
 ```
+
+```python via FuncStorage
+def create_file(filename, text):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"status" : "success", "filename" : filename}
+
+from argai import ArgFuncStorage
+
+arg = ArgFuncStorage()
+arg.register(create_file)
+
+result = arg("Create a file called language.csv for the top 10 most popular programming languages and its complexity.")
+```
+
+```python via Decorator
+
+from argai import ArgFuncStorage
+
+arg = ArgFuncStorage()
+
+@arg.register
+def create_file(filename, text):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"status" : "success", "filename" : filename}
+
+result = arg("Create a file called language.csv for the top 10 most popular programming languages and its complexity.")
+```
+</CodeGroup>
 
 Logs to keep track of the progress:
 ```
