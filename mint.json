@@ -47,7 +47,7 @@
     },
     {
       "group": "Guides",
-      "pages": ["guides/tuning-performance", "guides/self-healing", "guides/consecutive-calls", "guides/multiple-functions"]
+      "pages": ["guides/tuning-performance", "guides/self-healing", "guides/consecutive-calls", "guides/multiple-functions", "guides/chat", "guides/agent"]
     }
   ],
   "footerSocials": {
