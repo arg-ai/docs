@@ -5,11 +5,32 @@ icon: 'gear'
 ---
 
 ## Choosing the model
+We currently only support OpenAI but more is coming soon.
 
+```python
+arg = ArgAI(model="openai/gpt-3.5-turbo-0613")
+```
 
-## Adjusting the description
+## Adjust the function
+Below is a pretty basic function. By default argai will automatically try generating the necessary descriptions for the llm, however you can adjust it to get better performance if you manually describe the function in detail.
+```python
+def my_function(text):
+    return {"okay"}
+```
 
+### Adjusting the description
+You can add a description to your function by adding a docstring
+```python
+def my_function():
+    """My function does this"""
+    return {"okay"}
+```
 
-## Adjusting the output
+Input descriptions:
+```python
+```
 
+### Adjusting the output
+```
+```
 
