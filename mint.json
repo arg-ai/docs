@@ -43,11 +43,28 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": ["introduction", "setup", "how-it-works"]
+      "pages": [
+        "introduction",
+        "setup",
+        "how-it-works"
+      ]
     },
     {
       "group": "Guides",
-      "pages": ["guides/self-healing", "guides/consecutive-calls", "guides/tuning-performance", "guides/multiple-functions", "guides/chat", "guides/agent"]
+      "pages": [
+        "guides/self-healing",
+        "guides/consecutive-calls",
+        "guides/tuning-performance",
+        "guides/multiple-functions",
+        "guides/chat",
+        "guides/agent"
+      ]
+    },
+    {
+      "group": "Use Cases",
+      "pages": [
+        "use-cases/sql"
+      ]
     }
   ],
   "footerSocials": {
