@@ -11,6 +11,21 @@ We currently only support OpenAI but more is coming soon.
 arg = ArgAI(model="openai/gpt-3.5-turbo-0613")
 ```
 
+## Providing a system prompt
+`arg` can accept more than just strings but full conversations. This allows you to add a system_prompt which can improve accuracy.
+```python
+arg([
+    {
+        "role": "system",
+        "content": "",
+    },
+    {
+        "role": "user",
+        "content": "",
+    },
+])
+```
+
 ## Adjust the function
 Below is a pretty basic function. By default argai will automatically try generating the necessary descriptions for the llm, however you can adjust it to get better performance if you manually describe the function in detail.
 ```python
@@ -40,3 +55,45 @@ def my_function():
     return {"okay"}
 ```
 
+If you return your output in a dictionary with the key "_argai" this will actually make sure that the llm reads this as the output instead of the actual function output.
+```python
+def my_function():
+    """My function does this"""
+    return {"_argai" : "okay", "actual_output" : ...}
+```
+
+## Adjusting via pydantic
+
+```python
+from argai import ArgAI
+from pydantic import BasedModel, Field
+
+arg = ArgAI()
+
+class MyFunction(BasedModel)
+    """..."""
+    input: str = Field(..., description="...")
+    another_input: str = Field(..., description="...")
+
+@arg.register(base_model=MyFunction)
+def my_function(input, another_input):
+    return ...
+```
+
+## Adjusting via jsonschema/openai jsonschema
+
+If you input a jsonschema it will automatically input into the appropriate openai jsonschema
+```python
+from argai import ArgAI
+from pydantic import BasedModel, Field
+
+arg = ArgAI()
+
+my_func_schema = {
+    ...
+}
+
+@arg.register(jsonschema=my_func_schema)
+def my_function(input, another_input):
+    return ...
+```
