@@ -9,7 +9,27 @@ Sometimes a query will require functions being called not once but multiple time
 
 ```python
 arg(
-    "Create a file called language.csv with the top 10 most popular programming languages available, after that show me only the low complexity languages.", 
+    """1. Write a file called "hello.txt" that says "hello world".
+2. Then write a file called "bye.txt" that says "bye world".
+3. Then say "hello!"""",
     max_calls=10,
+    max_attempts=5
 )
+```
+
+Logs to keep track of the progress:
+```
+1: 💬: 1. Write a file called "hello.txt" that says "hello world".
+2. Then write a file called "bye.txt" that says "bye world".
+3. Then say "hello!"
+    📝 Calling LLM
+    🏃 Running function: create_file(filename='hello.txt', text='hello world')
+    ✔️ Sucessfull, result: {'status': 'success', 'filename': 'hello.txt'}
+2: 🌟: Ran create_file, result: {'status': 'success', 'filename': 'hello.txt'}
+    📝 Calling LLM
+    🏃 Running function: create_file(filename='bye.txt', text='bye world')
+    ✔️ Sucessfull, result: {'status': 'success', 'filename': 'bye.txt'}
+3: 🌟: Ran create_file, result: {'status': 'success', 'filename': 'bye.txt'}
+    📝 Calling LLM
+4: 🤖: Hello!
 ```
