@@ -85,18 +85,20 @@ def create_file(filename:str, text:str):
 
 ```python
 from argai import ArgAI
-from pydantic import BasedModel, Field
+from pydantic import BaseModel, Field
 
 arg = ArgAI()
 
-class MyFunction(BasedModel):
-    """..."""
-    input: str = Field(..., description="...")
-    another_input: str = Field(..., description="...")
+class CreateFileModel(BaseModel):
+    """This function will create a file given the content of the file"""
+    filename: str = Field(..., description="The name of the file")
+    text: str = Field(..., description="The text content of the file")
 
-@arg.register(base_model=MyFunction)
-def my_function(input, another_input):
-    return ...
+@arg.register(base_model=CreateFileModel)
+def create_file(filename:str, text:str):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"success": True}
 ```
 
 ## Adjusting via jsonschema/openai jsonschema
@@ -108,11 +110,27 @@ from pydantic import BasedModel, Field
 
 arg = ArgAI()
 
-my_func_schema = {
-    ...
+func_schema = {
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "filename": {
+        "type": "string",
+        "description": "The name of the file to be created."
+      },
+      "text": {
+        "type": "string",
+        "description": "The text content to be written to the file."
+      }
+    }
+  },
+  "name": "create_file",
+  "description": "This function takes two parameters: `filename` (the name of a file to be created) and `text` (the content that will be written into the file). \n\nThe function then opens the specified file in write mode, writes the provided text into the file, and closes it. It returns a dictionary with two key-value pairs: `\"status\"` which is set to `\"success\"`, and `\"filename\"` which is set to the name of the file that was created.\n\nThis function is useful when you want to create a new file and write some specific text into it. It can be used in various scenarios, such as generating reports, creating configuration files, or creating logs with specific content."
 }
 
-@arg.register(jsonschema=my_func_schema)
-def my_function(input, another_input):
-    return ...
+@arg.register(jsonschema=func_schema)
+def create_file(filename:str, text:str):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"success": True}
 ```
