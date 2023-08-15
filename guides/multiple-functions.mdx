@@ -25,7 +25,7 @@ def rename_file(filename, new_filename):
 ```
 
 ## 2. Run
-For complex queries that requires multiple calls of different functions set `max_calls` for [consecutive calling](guides/consecutive-calls) and `max_attempts` for [self-healing](guides/self-healing).
+For complex queries that requires multiple calls of different functions set `max_calls` for [consecutive calling](/consecutive-calls) and `max_attempts` for [self-healing](/self-healing).
 ```python
 arg("Create a file called hello.txt and then rename it to test.txt.",
     max_calls=10,
