@@ -1,9 +1,25 @@
 ---
 title: 'Chat'
-description: ''
+description: 'Spin up an interactive chat'
 icon: 'comments'
 ---
 
 ```python
 arg.chat()
+```
+
+```
+===== Interactive Chat =====
+Type exit to exit.
+
+Say something:
+```
+
+<Info>
+  Enter "exit" to leave the interactive chat.
+</Info>
+
+You can add a system prompt or prepend the conversation via:
+```python
+arg.chat(messages=[...])
 ```
