@@ -17,12 +17,12 @@ arg = ArgAI(model="openai/gpt-3.5-turbo-0613")
 arg([
     {
         "role": "system",
-        "content": "",
+        "content": "..."
     },
     {
         "role": "user",
-        "content": "",
-    },
+        "content": "..."
+    }
 ])
 ```
 
@@ -36,30 +36,32 @@ def my_function(text):
 ### Adjust the description
 You can add a description to your function by adding a docstring
 ```python
-def my_function():
+def my_function(text):
     """My function does this"""
     return {"okay"}
 ```
 
 Input descriptions:
 ```python
-def my_function():
+def my_function(text):
     """My function does this"""
     return {"okay"}
 ```
 
 ### Adjust the output
 ```python
-def my_function():
+def my_function(text):
     """My function does this"""
     return {"okay"}
 ```
 
-If you return your output in a dictionary with the key "_argai" this will actually make sure that the llm reads this as the output instead of the actual function output.
+If you return your output in a dictionary with the key `_argai` this will actually make sure that the llm reads this as the output instead of the actual function output.
 ```python
-def my_function():
-    """My function does this"""
-    return {"_argai" : "okay", "actual_output" : ...}
+def my_function(text):
+    return {
+        "_argai" : "okay", 
+        "actual_output" : ...
+    }
 ```
 
 ## Adjusting via pydantic
