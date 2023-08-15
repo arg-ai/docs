@@ -31,7 +31,9 @@ def pandas_query(csv_file, query):
 For complex queries that requires multiple calls of different functions set `max_calls` for [consecutive calling](guides/consecutive-calls) and `max_attempts` for [self-healing](guides/self-healing).
 ```python
 arg(
-    "Create a file called language.csv with the top 10 most popular programming languages available.",
+    """1. Write a file called "hello.txt" that says "hello world".
+2. Then write a file called "bye.txt" that says "bye world".
+3. Then say "hello!"`""",
     max_calls=10,
     max_attempts=5
 )
