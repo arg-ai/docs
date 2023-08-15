@@ -12,7 +12,7 @@ arg = ArgAI(model="openai/gpt-3.5-turbo-0613")
 ```
 
 ## Providing a system prompt
-`arg` can accept more than just strings but full conversations. This allows you to add a system_prompt which can improve accuracy.
+`arg` can accept more than just strings but full conversations. This allows you to add a system prompt which can improve accuracy.
 ```python
 arg([
     {
@@ -26,45 +26,62 @@ arg([
 ])
 ```
 
-## Adjust the function
+## Adjust the function definition
 Below is a pretty basic function. By default argai will automatically try generating the necessary descriptions for the llm, however you can adjust it to get better performance if you manually describe the function in detail.
 ```python
-def my_function(text):
-    return {"okay"}
+def create_file(filename, text):
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"success":True}
 ```
 
-### Adjust the description
+### Adjust the function description
 You can add a description to your function by adding a docstring
 ```python
-def my_function(text):
-    """My function does this"""
-    return {"okay"}
+def create_file(filename, text):
+    """This function will create a file given the content of the file"""
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"success":True}
 ```
 
-Input descriptions:
+### Adjust the function input parameters
+Parameter typing:
 ```python
-def my_function(text):
-    """My function does this"""
-    return {"okay"}
+def create_file(filename:str, text:str):
+    """This function will create a file given the content of the file"""
+    with open(filename,'w') as f:
+        f.write(text)
+        return {"success":True}
 ```
 
-### Adjust the output
+Parameter descriptions:
 ```python
-def my_function(text):
-    """My function does this"""
-    return {"okay"}
 ```
 
-If you return your output in a dictionary with the key `_argai` this will actually make sure that the llm reads this as the output instead of the actual function output.
+### Adjust the function output
+Make the output of your function more interpretable.
 ```python
-def my_function(text):
-    return {
-        "_argai" : "okay", 
-        "actual_output" : ...
-    }
+def create_file(filename:str, text:str):
+    """This function will create a file given the content of the file"""
+    with open(filename,'w') as f:
+        f.write(text)
+        return "Successfully create the file"
 ```
 
-## Adjusting via pydantic
+You can separate the output for LLM vs actual output. You do this by returning your output in a dictionary with the key `_argai` this will actually make sure that the llm reads the `_argai` output instead of the actual function output.
+```python
+def create_file(filename:str, text:str):
+    """This function will create a file given the content of the file"""
+    with open(filename,'w') as f:
+        f.write(text)
+        return {
+            "_argai" : "Successfully create the file",
+            "success": True
+        }
+```
+
+## Adjusting the definition with pydantic
 
 ```python
 from argai import ArgAI
