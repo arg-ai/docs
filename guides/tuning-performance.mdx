@@ -70,7 +70,7 @@ from pydantic import BasedModel, Field
 
 arg = ArgAI()
 
-class MyFunction(BasedModel)
+class MyFunction(BasedModel):
     """..."""
     input: str = Field(..., description="...")
     another_input: str = Field(..., description="...")
