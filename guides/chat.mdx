@@ -21,5 +21,14 @@ Say something:
 
 You can add a system prompt or prepend the conversation via:
 ```python
-arg.chat(messages=[...])
+arg.chat(messages=[
+  {
+      "role": "system",
+      "content": "..."
+  },
+  {
+      "role": "user",
+      "content": "..."
+  }
+])
 ```
